@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" type="module"></script>
+
+    <title>My Bartender - Cocktail Recipe App</title>
+  </head>
+  <body>
+    <header>
+      <h1>My Bartender - Cocktail Recipe App</h1>
+      <blockquote>Create your own Drinks like a Bartender.</blockquote>
+    </header>
+    <main>
+      <!-- Search Box -->
+      <section class="search-box">
+        <input type="text" id="search-text" name="search-input" />
+        <button
+          type="submit"
+          class="search-btn"
+          id="search-btn"
+          aria-label="Search Button"
+        >
+          <i class="fas fa-search"></i>
+        </button>
+      </section>
+      <!-- -End Search Box -->
+      <section class="search-result">
+        <div class="drink">
+          <!-- drink item -->
+          <div class="drink-item">
+            <div class="drink-item__image">
+              <img src="" alt="drink text" />
+            </div>
+            <h2>Magaritha</h2>
+            <div class="drink-item__category">Ordenary Drink</div>
+            <a href="#" class="recipe-button">Make it</a>
+          </div>
+          <div class="drink-item__details">
+            <div class="one-third">
+              <div class="one-third__stat"></div>
+              <div class="one-third__title"></div>
+            </div>
+            <div class="one-third">
+              <div class="one-third__stat"></div>
+              <div class="one-third__title"></div>
+            </div>
+            <div class="one-third">
+              <div class="one-third__stat"></div>
+              <div class="one-third__title"></div>
+            </div>
+          </div>
+          <!-- end drink item -->
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="copyright-text">Make with Love by Oliver Hees 2023</p>
+    </footer>
+  </body>
+</html>
