@@ -21,6 +21,7 @@ body {
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 1.6;
+  min-height: 500px;
 }
 
 header {
@@ -49,10 +50,11 @@ blockquote {
 
 .search-box input {
   width: 50%;
-  padding: 5px;
+  padding: 5px 10px;
   border: solid 1px var(--primary-color);
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
+  font-family: inherit;
 }
 
 .search-btn {
@@ -68,4 +70,110 @@ blockquote {
 .search-btn:hover {
   background-color: var(--primary-color-hover);
   border: solid 1px var(--primary-color-hover);
+}
+
+.search-result {
+  margin: 3rem 1rem 0 1rem;
+}
+
+.drink {
+  /* position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  transition: all 0.4s linear;
+}
+
+.drink-item {
+  width: 100%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: solid 1px var(--text-color);
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px #0000005c;
+}
+
+.drink-item__image {
+  display: block;
+  width: 100%;
+}
+
+.drink-item__image img {
+  max-width: 100%;
+  height: auto;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.drink-item h2 {
+  color: var(--primary-color);
+  text-align: center;
+  font-weight: 600;
+  margin-top: 0.4rem;
+}
+
+.drink-item__category {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.recipe-button {
+  width: 125px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 400;
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  border-radius: 1.5rem;
+  margin: 1.5rem 0rem;
+  color: #fff;
+  font-weight: 400;
+  border: solid 1px var(--primary-color-hover);
+  transition: all 0.4s linear;
+}
+
+.recipe-button:hover {
+  background-color: var(--primary-color-hover);
+  border: solid 1px var(--primary-color-hover);
+}
+
+footer {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 1rem 0;
+  color: var(--text-color);
+  margin-top: 2rem;
+  position: static;
+}
+
+/* Ansicht für Desktop-Monitore */
+@media screen and (min-width: 620px) {
+  .drink {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .search-result {
+    margin: 3rem 4rem;
+  }
+}
+
+/* tablet */
+@media screen and (min-width: 720px) {
+  .drink {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+  }
+
+  .search-result {
+    margin: 3rem 4rem;
+  }
 }
