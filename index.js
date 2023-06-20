@@ -3,6 +3,7 @@ const cocktailList = document.querySelector(".drink");
 
 //event listeners
 searchBtn.addEventListener("click", getDrinkList);
+cocktailList.addEventListener("click", getRecipe);
 
 //get drink list by search input
 async function getDrinkList() {
@@ -48,5 +49,34 @@ async function getDrinkList() {
   } catch (error) {
     //log in console when give error
     console.log(error);
+  }
+}
+
+//get cocktail recipe by data-id
+async function getRecipe(event) {
+  event.preventDefault();
+
+  //check event.target contains recipe-btn
+  if (event.target.classList.contains("recipe-button")) {
+    //for debuging
+    // console.log(event.target);
+    // console.log(event.target.parentElement);
+    // console.log(event.target.parentElement.parentElement);
+    // console.log(event.target.parentElement.dataset);
+
+    //define variable to get parent element from button
+    let drinkItem = event.target.parentElement;
+
+    //call API with drink ID
+    const recipeRes = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkItem.dataset.id}`
+    );
+    //get json data from response
+    const recipeData = await recipeRes.json();
+
+    //insert data to modal
+
+    //drinkRecipeModal(recipeDatat.drinks);
+    console.log(recipeData);
   }
 }
