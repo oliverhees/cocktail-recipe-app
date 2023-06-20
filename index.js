@@ -1,52 +1,48 @@
-const searchBtn = document.getElementById("search-btn");
-const cocktailList = document.querySelector(".drink");
+const input = document.querySelector('[data-js="input"]');
+const button = document.querySelector(".search-btn");
+const randomButton = document.querySelector('[data-js="rnd-button"]');
+const output = document.querySelector('[data-js="search-result"]');
 
-//event listeners
-searchBtn.addEventListener("click", getDrinkList);
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+const randomUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
-//get drink list by search input
-async function getDrinkList() {
-  //get search input (value), and remove spaces on start and end (trim())
-  let searchInput = document.getElementById("search-input").value.trim();
+button.addEventListener("click", async () => {
+  const response = await fetch(url + input.value);
+  const cocktail = await response.json();
+  console.log(cocktail);
+  const drinks = cocktail.drinks;
+  console.log(drinks);
+  let html = "";
+  drinks.forEach((drink) => {
+    html += ` <div class="drink">
 
-  try {
-    //fetch the data from api
-    const response = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchInput}`
-    );
-    //wait on response and get json
-    const data = await response.json();
+  <div class="drink-item">
+    <div class="drink-item__image">
+      <img src="${drink.strDrinkThumb}" alt="drink text" />
+    </div>
+    <h2>${drink.strDrink}</h2>
+    <div class="drink-item__category">${drink.strCategory}</div>
+    <a href="#" class="recipe-button">Make it</a>
+  </div>`;
+    output.innerHTML = html;
+  });
+});
+randomButton.addEventListener("click", async () => {
+  const response = await fetch(randomUrl);
+  const cocktail = await response.json();
 
-    //set empty html variable
-    let html = "";
+  const drink = cocktail.drinks[0];
+  console.log(drink);
+  let html = ` <div class="drink">
 
-    //check data have drinks
-    if (data.drinks) {
-      //or response.ok
-      //iterate over drinks array
-      data.drinks.forEach((drink) => {
-        //fill variable with modified html and data
-        html += `
-            <!-- drink item -->
-          <div class="drink-item" data-id="${drink.idDrink}">
-            <div class="drink-item__image">
-              <img src="${drink.strDrinkThumb}" alt="drink text" />
-            </div>
-            <h2>${drink.strDrink}</h2>
-            <div class="drink-item__category">${drink.strCategory}</div>
-            <a href="#" class="recipe-button">Make it</a>
-          </div>
-          <!-- end drink item -->
-            `;
-      });
-    } else {
-      //log in console when no drinks found
-      console.log("Nothing found");
-    }
-    //insert html
-    cocktailList.innerHTML = html;
-  } catch (error) {
-    //log in console when give error
-    console.log(error);
-  }
-}
+<div class="drink-item">
+  <div class="drink-item__image">
+    <img src="${drink.strDrinkThumb}" alt="drink text" />
+  </div>
+  <h2>${drink.strDrink}</h2>
+  <div class="drink-item__category">${drink.strCategory}</div>
+  <a href="#" class="recipe-button">Make it</a>
+</div>`;
+  output.innerHTML = html;
+});
+console.log(randomButton);

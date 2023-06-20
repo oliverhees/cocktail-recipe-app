@@ -18,7 +18,13 @@
       <blockquote>Create your own Drinks like a Bartender.</blockquote>
       <!-- Search Box -->
       <div class="search-box">
-        <input type="text" id="search-input" name="search-input" />
+        <input
+          type="text"
+          data-js="input"
+          id="search-text"
+          name="search-input"
+        />
+
         <button
           type="submit"
           class="search-btn"
@@ -28,11 +34,45 @@
           <i class="fas fa-search"></i>
         </button>
       </div>
+      <button class="recipe-button" data-js="rnd-button">
+        Get Random Cocktail
+      </button>
       <!-- -End Search Box -->
     </header>
     <main>
-      <section class="search-result">
-        <div class="drink"></div>
+      <section data-js="search-result" class="search-result">
+        <div class="drink">
+          <!-- drink item -->
+          <div class="drink-item">
+            <div class="drink-item__image">
+              <img src="/assets/img/5noda61589575158.jpg" alt="drink text" />
+            </div>
+            <h2>Magaritha</h2>
+            <div class="drink-item__category">Ordenary Drink</div>
+            <a href="#" class="recipe-button">Make it</a>
+          </div>
+          <!-- end drink item -->
+          <!-- drink item -->
+          <div class="drink-item">
+            <div class="drink-item__image">
+              <img src="/assets/img/5noda61589575158.jpg" alt="drink text" />
+            </div>
+            <h2>Magaritha</h2>
+            <div class="drink-item__category">Ordenary Drink</div>
+            <a href="#" class="recipe-button">Make it</a>
+          </div>
+          <!-- end drink item -->
+          <!-- drink item -->
+          <div class="drink-item">
+            <div class="drink-item__image">
+              <img src="/assets/img/5noda61589575158.jpg" alt="drink text" />
+            </div>
+            <h2>Magaritha</h2>
+            <div class="drink-item__category">Ordenary Drink</div>
+            <a href="#" class="recipe-button">Make it</a>
+          </div>
+          <!-- end drink item -->
+        </div>
       </section>
     </main>
     <footer>
