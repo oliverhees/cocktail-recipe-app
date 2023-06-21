@@ -52,7 +52,7 @@ randomButton.addEventListener("click", async () => {
   const recipeButton = document.querySelector('[data-js="recipe-button"]');
   recipeButton.addEventListener("click", () => {
     output.innerHTML = "";
-    let html2 = `<div class="drink-item">
+    let html2 = `<div class="drink">
     <div class="drink-item__image">
     <h2>${drink.strDrink}</h2>
       <img src="${drink.strDrinkThumb}" alt="drink text" />
