@@ -1,5 +1,6 @@
 const searchBtn = document.getElementById("search-btn");
 const cocktailList = document.querySelector(".drink");
+const recipeModal = document.querySelector(".recipe-modal");
 
 //event listeners
 searchBtn.addEventListener("click", getDrinkList);
@@ -58,7 +59,7 @@ async function getRecipe(event) {
 
   //check event.target contains recipe-btn
   if (event.target.classList.contains("recipe-button")) {
-    //for debuging
+    //for debugging
     // console.log(event.target);
     // console.log(event.target.parentElement);
     // console.log(event.target.parentElement.parentElement);
@@ -75,8 +76,37 @@ async function getRecipe(event) {
     const recipeData = await recipeRes.json();
 
     //insert data to modal
-
-    //drinkRecipeModal(recipeDatat.drinks);
-    console.log(recipeData);
+    drinkRecipeModal(recipeData.drinks);
   }
+}
+
+//create modal recipe box
+function drinkRecipeModal(drink) {
+  //debugging
+  // console.log(drink);
+  // console.log(drink[0].idDrink);
+
+  //create Ingredient list
+  let list = "";
+  for (let i = 1; i <= 15; i++) {
+    if (
+      drink[0]["strIngredient" + i] != null &&
+      drink[0]["strMeasure" + i] != null
+    ) {
+      list += `
+      <li>${drink[0]["strIngredient" + i]}: ${drink[0]["strMeasure" + i]}</li>`;
+    }
+  }
+
+  let html = ` <h2>${drink[0].strDrink}</h2>
+  <div class="one-fourth">
+    <img src="${drink[0].strDrinkThumb}" alt="recipe">
+  </div>
+  <div class="three-fourth">
+    <p class="recipe-modal__instructions">${drink[0].strInstructions}</p>
+    <h3>Ingredients:</h3>
+    <ul class="recipe-modal__ingredients">${list}</ul>
+  </div>`;
+  recipeModal.innerHTML = html;
+  recipeModal.classList.add("showRecipe");
 }
