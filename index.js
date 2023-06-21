@@ -45,4 +45,3 @@ randomButton.addEventListener("click", async () => {
 </div>`;
   output.innerHTML = html;
 });
-console.log(randomButton);
