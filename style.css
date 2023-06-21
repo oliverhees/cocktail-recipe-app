@@ -177,10 +177,25 @@ footer {
     margin: 3rem 4rem;
   }
 }
-.ingridient-list {
+.ingredient-list {
   text-align: center;
   list-style: none;
 }
 .instructions {
   color: var(--text-color);
+}
+.ingredients {
+  text-align: center;
+}
+
+.drink-recipe {
+  width: 200%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: solid 1px var(--text-color);
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px #0000005c;
 }

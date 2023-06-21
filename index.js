@@ -46,22 +46,25 @@ randomButton.addEventListener("click", async () => {
   <button data-js="recipe-button" class="recipe-button">Make it</button>
 </div>`;
   output.innerHTML = html;
+
+  //Recipe Button
+
   const recipeButton = document.querySelector('[data-js="recipe-button"]');
   recipeButton.addEventListener("click", () => {
     output.innerHTML = "";
-    let html2 = `<div class="drink">
+    let html2 = `<div class="drink-item">
     <div class="drink-item__image">
     <h2>${drink.strDrink}</h2>
       <img src="${drink.strDrinkThumb}" alt="drink text" />
-      <div class="drink-item__category">${drink.strCategory}</div>
-      <p>Ingridients:</p>
-      <ul data-js="ingridient-list" class="ingridient-list">
+      
+      <p class="ingredients">Ingredients:</p>
+      <ul data-js="ingredient-list" class="ingredient-list">
       </ul>
       <p class="instructions">
       ${drink.strInstructions}
       </p>`;
     output.innerHTML = html2;
-    const ingrList = document.querySelector('[data-js="ingridient-list"]');
+    const ingrList = document.querySelector('[data-js="ingredient-list"]');
     const ingrArray = [
       drink.strIngredient1,
       drink.strIngredient2,
@@ -79,14 +82,31 @@ randomButton.addEventListener("click", async () => {
       drink.strIngredient14,
       drink.strIngredient15,
     ];
+    const measureArray = [
+      drink.strMeasure1,
+      drink.strMeasure2,
+      drink.strMeasure3,
+      drink.strMeasure4,
+      drink.strMeasure5,
+      drink.strMeasure6,
+      drink.strMeasure7,
+      drink.strMeasure8,
+      drink.strMeasure9,
+      drink.strMeasure10,
+      drink.strMeasure11,
+      drink.strMeasure12,
+      drink.strMeasure13,
+      drink.strMeasure14,
+      drink.strMeasure15,
+    ];
     console.log(ingrArray);
     ingrArray
       .filter((ingr) => ingr != null)
       .forEach((ingr) => {
         const listElement = document.createElement("li");
-        listElement.textContent = ingr;
+        listElement.textContent =
+          ingr + " - " + measureArray[ingrArray.indexOf(ingr)];
         ingrList.append(listElement);
       });
   });
 });
-console.log(randomButton);
