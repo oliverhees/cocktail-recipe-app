@@ -1,10 +1,25 @@
 const searchBtn = document.getElementById("search-btn");
+const searchInput = document.getElementById("search-input");
 const cocktailList = document.querySelector(".drink");
 const recipeModal = document.querySelector(".recipe-modal");
+const recipeDetialContent = document.querySelector(".recipe-detail-content");
+const closeButton = document.getElementById("recipe-close-btn");
+const welcome = document.querySelector(".welcome");
+const searchResult = document.querySelector(".search-result");
 
 //event listeners
 searchBtn.addEventListener("click", getDrinkList);
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    event.preventDefault(); // Verhindert das Standardverhalten (z.B. Formularübermittlung)
+    getDrinkList();
+  }
+});
 cocktailList.addEventListener("click", getRecipe);
+closeButton.addEventListener("click", () => {
+  recipeModal.classList.remove("recipe-show");
+  console.log("test");
+});
 
 //get drink list by search input
 async function getDrinkList() {
@@ -25,6 +40,8 @@ async function getDrinkList() {
     //check data have drinks
     if (data.drinks) {
       //or response.ok
+      //hide welcome
+      welcome.classList.remove("show-welcome");
       //iterate over drinks array
       data.drinks.forEach((drink) => {
         //fill variable with modified html and data
@@ -43,7 +60,12 @@ async function getDrinkList() {
       });
     } else {
       //log in console when no drinks found
-      console.log("Nothing found");
+      welcome.classList.remove("show-welcome");
+      
+      const notfound = document.createElement("div");
+      notfound.classList.add("not-found");
+      notfound.innerHTML = `<h2>Sorry! No recipe found.</h2><img src="/assets/img/mojito-cuate.png" alt="No recipe found">`;
+      searchResult.append(notfound);
     }
     //insert html
     cocktailList.innerHTML = html;
@@ -86,6 +108,7 @@ function drinkRecipeModal(drink) {
   // console.log(drink);
   // console.log(drink[0].idDrink);
 
+  recipeModal.classList.add("recipe-show");
   //create Ingredient list
   let list = "";
   for (let i = 1; i <= 15; i++) {
@@ -98,7 +121,9 @@ function drinkRecipeModal(drink) {
     }
   }
 
-  let html = ` <h2>${drink[0].strDrink}</h2>
+  let html = `
+  <h2>${drink[0].strDrink}</h2>
+  <div class="recipe-instructions">
   <div class="one-fourth">
     <img src="${drink[0].strDrinkThumb}" alt="recipe">
   </div>
@@ -106,7 +131,8 @@ function drinkRecipeModal(drink) {
     <p class="recipe-modal__instructions">${drink[0].strInstructions}</p>
     <h3>Ingredients:</h3>
     <ul class="recipe-modal__ingredients">${list}</ul>
+  </div>
   </div>`;
-  recipeModal.innerHTML = html;
-  recipeModal.classList.add("showRecipe");
+  recipeDetialContent.innerHTML = html;
+  recipeModal.classList.add("recipe-show");
 }
