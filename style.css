@@ -48,6 +48,46 @@ blockquote {
   width: 100%;
 }
 
+.search-box input::placeholder {
+  color: #ccc;
+  font-weight: 200;
+}
+
+.welcome {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-welcome {
+  display: flex;
+}
+
+.welcome a {
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.welcome img {
+  width: 80%;
+  max-width: 400px;
+}
+
+.not-found img {
+  width: 80%;
+  max-width: 300px;
+}
+
 .search-box input {
   width: 50%;
   padding: 5px 10px;
@@ -152,6 +192,70 @@ footer {
   position: static;
 }
 
+/* Modal Recipe Box */
+.recipe-modal {
+  display: none;
+  position: absolute;
+  min-width: 90vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -50%);
+  background-color: var(--primary-color);
+  margin: 2rem;
+  padding: 2rem;
+  border: solid 1px var(--one-third-border-color);
+  border-radius: 1rem;
+  color: #fff;
+}
+
+.recipe-instructions {
+  display: flex;
+  justify-content: space-around;
+}
+.recipe-modal h2 {
+  font-size: 1.8rem;
+}
+
+.one-fourth {
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.one-fourth img {
+  width: 100%;
+}
+
+.three-fourth {
+  padding: 0 2rem 0;
+}
+
+.three-fourth h3 {
+  margin-top: 2rem;
+}
+
+.recipe-modal__ingredients li {
+  list-style-type: none;
+}
+
+.recipe-show {
+  display: block;
+}
+
+.recipe-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+.recipe-close-btn:hover {
+  color: var(--primary-color-hover);
+}
 /* Ansicht für Desktop-Monitore */
 @media screen and (min-width: 620px) {
   .drink {
