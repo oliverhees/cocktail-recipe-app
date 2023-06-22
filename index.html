@@ -18,7 +18,12 @@
       <blockquote>Create your own Drinks like a Bartender.</blockquote>
       <!-- Search Box -->
       <div class="search-box">
-        <input type="text" id="search-input" name="search-input" />
+        <input
+          type="text"
+          id="search-input"
+          name="search-input"
+          placeholder="Search by Cocktail Name..."
+        />
         <button
           type="submit"
           class="search-btn"
@@ -28,15 +33,47 @@
           <i class="fas fa-search"></i>
         </button>
       </div>
+      <div class="button-bar">
+        <button
+          type="button"
+          class="popular"
+          id="popular-btn"
+          aria-label="Popular Button"
+        >
+          Popular
+        </button>
+      </div>
       <!-- -End Search Box -->
     </header>
     <main>
       <!--Search Result-->
       <section class="search-result">
+        <div class="welcome show-welcome">
+          <img
+            src="/assets/img/Cocktail bartender-bro.png"
+            alt="Welcome to Bartender"
+          />
+          <p>
+            <a href="https://storyset.com/work"
+              >Work illustrations by Storyset</a
+            >
+          </p>
+        </div>
         <div class="drink"></div>
       </section>
       <!--Recipe Modal-->
-      <section class="recipe-modal"></section>
+      <section class="recipe-modal">
+        <!-- recipe close btn -->
+        <button
+          type="button"
+          class="btn recipe-close-btn"
+          id="recipe-close-btn"
+          aria-label="Modal Close Button"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="recipe-detail-content"></div>
+      </section>
     </main>
     <footer>
       <p class="copyright-text">Make with Love by Oliver Hees 2023</p>
